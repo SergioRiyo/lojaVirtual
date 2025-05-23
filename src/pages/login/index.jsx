@@ -1,35 +1,73 @@
 import React from "react";
-import "./style.css"
+import "./style.css";
 import { useNavigate } from "react-router-dom";
-export default function Login(){
-    const Navigate = useNavigate();
-    return(
-        <>
-        <div className="header">
-            <button className="navButton" onClick={() => Navigate("/produtos")}>Produtos</button>
-            <button className="navButton" onClick={() => Navigate("/login")}>Login</button>
-            <button className="navButton" onClick={() => Navigate("/cadastroLogin")}>Cadastro</button>
-        </div>
-        <div className="containerLogin">
-            <form action="submit" className="login">
-                <h2>Bem-vindo de volta <br></br> à <b>Loja...</b></h2>
+export default function Login() {
+  const navigate = useNavigate();
+  const [user, setUser] = React.useState("");
+  const [senha, setSenha] = React.useState("");
 
-                <label>
-                    Email
-                    <input type="email" />
-                </label>
+  const login = () => {
+    if (user && senha) {
+      localStorage.setItem("auth", "true");
+      navigate("/produtos");
+    } else {
+      alert("Preencher os campos");
+    }
+  };
+  return (
+    <>
+      <div className="header">
+        <button className="navButton" onClick={() => navigate("/produtos")}>
+          Produtos
+        </button>
+        <button className="navButton" onClick={() => navigate("/login")}>
+          Login
+        </button>
+        <button
+          className="navButton"
+          onClick={() => navigate("/cadastroLogin")}
+        >
+          Cadastro
+        </button>
+      </div>
+      <div className="containerLogin">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            login();
+          }}
+          className="login"
+        >
+          <h2>Bem-vindo</h2>
 
-                <label>
-                    Senha
-                    <input type="password" />
-                </label>
+          <label>
+            Email
+            <input
+              value={user}
+              onChange={(e) => setUser(e.target.value)}
+              type="text"
+            />
+          </label>
 
-                <button>Entrar</button>
-                <p><a href="">Esqueceu sua senha?</a></p>
+          <label>
+            Senha
+            <input
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+              type="password"
+            />
+          </label>
 
-                <p>Nao tem conta? <a href="">Cadastre-se</a></p>
-            </form>
-        </div>
-        </>
-    )
+          <button>Entrar</button>
+          <p>
+            <a href="">Esqueceu sua senha?</a>
+          </p>
+
+          <p>
+            Nao tem conta? <a href="">Cadastre-se</a>
+          </p>
+        </form>
+      </div>
+    </>
+  );
 }
