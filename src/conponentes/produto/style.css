@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 4rem;
+    background-color: white;
+}
+
+.botaoCarrinho {
+    display: flex;
+    position: fixed;
+    top: 1rem;
+    right: 1.5rem;
+    z-index: 1000;
+    align-items: center;
+}
+
+.botaoCarrinho button {
+    font-size: 2rem;
+    color: orange;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: white;
+}
+
+.carCount {
+    font-size: 1.2rem;
+    color: orange;
+    font-weight: bold;
+    position: fixed;
+    margin-top: 1.40rem;
+    margin-left: 2rem;
+}
+
+/* Container do carrinho lateral */
+.containerCarrinho {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 30vw;
+    height: 100vh;
+    background-color: white;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.6);
+    z-index: 1100;
+    padding: 0.7rem 1rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+/* Quando estiver visível */
+.containerCarrinho.show {
+    transform: translateX(0);
+}
+
+/* Botão de fechar */
+.closeCarrinho {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    color: orange;
+    font-size: 2rem;
+    cursor: pointer;
+    margin-bottom: 0.7rem;
+    transition: color 0.3s ease;
+    padding: 0.5rem;
+}
+
+.closeCarrinho:hover {
+    color: #ff6600;
+}
+
+.containerProdutos {
+    padding: 2rem 4rem 2rem 4rem;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+    position: relative;
+}
+
+.produto {
+    border: 1px solid orange;
+    border-radius: 10px;
+    padding: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.produto img {
+    width: 10rem;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 1rem;
+    border: 3px solid orange;
+    border-radius: 10px;
+}
+
+.produto h4 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: orange;
+}
+
+.produto p {
+    font-size: 1.2rem;
+    color: black; 
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.produto button {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.produto button:hover {
+    font-size: 1.1rem;
+    background-color: #ff6600;
+}
+
+.header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: orange;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    z-index: 999;
+    border-bottom: 1px solid #ff6600;
+}
+
+.navButton {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.navButton:hover {
+    color: orange;
+    background-color: white;
+    border-radius: 5px;
+}
