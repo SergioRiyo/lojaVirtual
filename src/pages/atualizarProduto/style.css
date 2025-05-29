@@ -1,0 +1,74 @@
+.atualizar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: white;
+  padding: 20px;
+}
+.header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: orange;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    z-index: 999;
+    border-bottom: 1px solid #ff6600;
+}
+.atualizar-form {
+  background-color: white;
+  border: 2px solid #ffa500;
+  border-radius: 20px;
+  padding: 30px;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.atualizar-titulo {
+  text-align: center;
+  color: #ffa500;
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+.atualizar-label {
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 4px;
+  font-weight: bold;
+  color: #333;
+}
+
+.atualizar-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ffa500;
+  border-radius: 10px;
+  outline: none;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.atualizar-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #ffa500;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.atualizar-btn:hover {
+  background-color: #e69500;
+}

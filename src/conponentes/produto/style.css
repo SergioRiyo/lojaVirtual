@@ -10,6 +10,8 @@
     justify-content: center;
     padding-top: 4rem;
     background-color: white;
+    padding-left: 24px; 
+    transition: padding-left 0.3s;
 }
 
 .botaoCarrinho {
@@ -39,7 +41,6 @@
     margin-left: 2rem;
 }
 
-/* Container do carrinho lateral */
 .containerCarrinho {
     position: fixed;
     top: 0;
@@ -56,12 +57,10 @@
     transition: transform 0.3s ease;
 }
 
-/* Quando estiver visível */
 .containerCarrinho.show {
     transform: translateX(0);
 }
 
-/* Botão de fechar */
 .closeCarrinho {
     align-self: flex-end;
     background: none;
@@ -138,20 +137,6 @@
     background-color: #ff6600;
 }
 
-.header {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: orange;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: flex-start;
-    gap: 1rem;
-    z-index: 999;
-    border-bottom: 1px solid #ff6600;
-}
-
 .navButton {
     background-color: transparent;
     border: none;
@@ -167,4 +152,43 @@
     color: orange;
     background-color: white;
     border-radius: 5px;
+}
+/* Adicione ao final do style.css do componente produto */
+.produto-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.btn-remover {
+  background: #fff;
+  color: orange;
+  border: 1px solid orange;
+  border-radius: 5px;
+  padding: 0.4rem 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-remover:hover {
+  background: #ffe5cc;
+  color: #ff6600;
+}
+
+.btn-atualizar {
+  background: #ff6600;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.4rem 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-atualizar:hover {
+  background: orange;
 }
