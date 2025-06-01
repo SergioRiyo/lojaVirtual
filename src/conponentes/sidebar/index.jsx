@@ -7,12 +7,6 @@ export default function Sidebar() {
 
   return (
     <div className="sidebar">
-      <button className="navButton" onClick={() => navigate("/login")}>
-        Login
-      </button>
-      <button className="navButton" onClick={() => navigate("/cadastroLogin")}>
-        Cadastro
-      </button>
       <button className="navButton" onClick={() => navigate("/produtos")}>
         Produtos
       </button>
