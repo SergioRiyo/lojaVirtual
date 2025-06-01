@@ -18,7 +18,7 @@ export default function Routers() {
       
       <Route path="/login" element={<Login/>} />
 
-      <Route path="/atualizarProduto" element={<AtualizarProduto />} />
+      <Route path="/atualizarProduto/:id" element={<AtualizarProduto />} />
 
       <Route path="/cadastroProduto" element={<CadastroProduto />} />
 

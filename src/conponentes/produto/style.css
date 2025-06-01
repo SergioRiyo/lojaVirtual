@@ -133,7 +133,6 @@
 }
 
 .produto button:hover {
-    font-size: 1.1rem;
     background-color: #ff6600;
 }
 
@@ -148,12 +147,6 @@
     transition: color 0.3s ease, background-color 0.3s ease;
 }
 
-.navButton:hover {
-    color: orange;
-    background-color: white;
-    border-radius: 5px;
-}
-/* Adicione ao final do style.css do componente produto */
 .produto-actions {
   display: flex;
   gap: 0.5rem;
@@ -170,13 +163,8 @@
   padding: 0.4rem 0.8rem;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
 }
 
-.btn-remover:hover {
-  background: #ffe5cc;
-  color: #ff6600;
-}
 
 .btn-atualizar {
   background: #ff6600;

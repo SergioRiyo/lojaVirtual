@@ -1,6 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { LerProdutos } from "../conponents/data/fetchProdutos";
-
+import { LerProdutos } from "../data/fetchProdutos";
 export const DataContext = createContext();
 
 export default function DataProvider({ children }) {

@@ -1,23 +1,39 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./style.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { RiShoppingCart2Fill } from "react-icons/ri";
+import {
+  AtualizarProduto,
+  LerProdutos,
+} from "../../conponentes/data/fetchProdutos";
+import { DataContext } from "../../conponentes/context/DataContext";
 
-export default function AtualizarProduto() {
+export default function EditarProduto() {
+  const { id } = useParams();
+  const { produtos, setProdutos } = React.useContext(DataContext);
+  const produto = produtos.find((item) => item.id === parseInt(id));
   const navigate = useNavigate();
-  const [nome, setNome] = useState("Produto Exemplo");
-  const [valor, setValor] = useState("199.99");
-  const [imagem, setImagem] = useState("https://via.placeholder.com/150");
+  const [nome, setNome] = useState(produto?.nome);
+  const [valor, setValor] = useState(produto?.valor);
+  const [imagem, setImagem] = useState(produto?.imagem);
 
-  
+  const atualizar = async () => {
+    try {
+      await AtualizarProduto(id, nome, valor, imagem);
+      await LerProdutos(setProdutos);
+      navigate("/produtos");
+    } catch (error) {
+      console.error("Erro ao atualizar produto:", error);
+    }
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Produto atualizado!");
+    atualizar();
   };
 
   return (
     <>
-    <div className="header">
+      <div className="header">
         <button className="navButton" onClick={() => navigate("/produtos")}>
           Produtos
         </button>
@@ -30,37 +46,39 @@ export default function AtualizarProduto() {
         >
           Cadastro
         </button>
-    </div>
-    <div className="atualizar-container">
-      <form onSubmit={handleSubmit} className="atualizar-form">
-        <h2 className="atualizar-titulo">Atualizar Produto</h2>
+      </div>
+      <div className="atualizar-container">
+        <form onSubmit={handleSubmit} className="atualizar-form">
+          <h2 className="atualizar-titulo">Atualizar Produto</h2>
 
-        <label className="atualizar-label">Nome:</label>
-        <input
-          className="atualizar-input"
-          value={nome}
-          onChange={(e) => setNome(e.target.value)}
-        />
+          <label className="atualizar-label">Nome:</label>
+          <input
+            className="atualizar-input"
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+          />
 
-        <label className="atualizar-label">Valor (R$):</label>
-        <input
-          type="number"
-          className="atualizar-input"
-          value={valor}
-          onChange={(e) => setValor(e.target.value)}
-        />
+          <label className="atualizar-label">Valor (R$):</label>
+          <input
+            type="number"
+            className="atualizar-input"
+            value={valor}
+            onChange={(e) => setValor(e.target.value)}
+          />
 
-        <label className="atualizar-label">URL da Imagem:</label>
-        <input
-          type="url"
-          className="atualizar-input"
-          value={imagem}
-          onChange={(e) => setImagem(e.target.value)}
-        />
+          <label className="atualizar-label">URL da Imagem:</label>
+          <input
+            type="url"
+            className="atualizar-input"
+            value={imagem}
+            onChange={(e) => setImagem(e.target.value)}
+          />
 
-        <button className="atualizar-btn">Atualizar</button>
-      </form>
-    </div>
+          <button type="submit" className="atualizar-btn">
+            Editar
+          </button>
+        </form>
+      </div>
     </>
   );
 }

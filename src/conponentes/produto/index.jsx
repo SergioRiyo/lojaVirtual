@@ -3,28 +3,34 @@ import Header from "../header";
 import Sidebar from "../sidebar";
 import { RiShoppingCart2Fill } from "react-icons/ri";
 import { TbShoppingCartDiscount } from "react-icons/tb";
-import { produtos as produtosOriginais } from "./produtos";
 import Carrinho from "../carrinho";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
+import { DataContext } from "../context/DataContext";
+import { LerProdutos, DeletarProduto } from "../data/fetchProdutos";
+import AtualizarProduto from "../../pages/atualizarProduto";
 
 export default function Produto() {
   const [carItens, setCarItens] = React.useState([]);
   const [mostrarCar, setMostrarCar] = React.useState(false);
-  const [produtos, setProdutos] = React.useState(produtosOriginais);
+  const{produtos, setProdutos} = React.useContext(DataContext);
   const navigate = useNavigate();
 
   function addItem(item) {
     setCarItens((prev) => [...prev, item]);
   }
 
-  function removerProduto(nome) {
-    setProdutos((prev) => prev.filter((item) => item.nome !== nome));
+async function removerProduto(id) {
+  try {
+    await DeletarProduto(id);
+    const updatedProdutos = produtos.filter((item) => item.id !== id);
+    setProdutos(updatedProdutos);
+    await LerProdutos(setProdutos);
+  } catch (error) {
+    console.error("Erro ao remover produto:", error);
   }
+}
 
-  function atualizarProduto() {
-    navigate("/atualizarProduto");
-  }
 
   return (
     <>
@@ -47,7 +53,6 @@ export default function Produto() {
             <Carrinho carItens={carItens} setCarItens={setCarItens} />
           </div>
         )}
-
         <div className="containerProdutos">
           {produtos?.map((item) => (
             <div key={item.nome} className="produto">
@@ -58,13 +63,13 @@ export default function Produto() {
               <div className="produto-actions">
                 <button
                   className="btn-remover"
-                  onClick={() => removerProduto(item.nome)}
+                  onClick={() => removerProduto(item.id)}
                 >
                   Remover
                 </button>
                 <button
                   className="btn-atualizar"
-                  onClick={atualizarProduto}
+                  onClick={()=>navigate(`/atualizarProduto/${item.id}`)}  
                 >
                   Atualizar
                 </button>
