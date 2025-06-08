@@ -7,14 +7,9 @@ export default function Sidebar() {
 
   return (
     <div className="sidebar">
-      <button className="navButton" onClick={() => navigate("/login")}>
-        Login
-      </button>
-      <button className="navButton" onClick={() => navigate("/cadastroLogin")}>
-        Cadastro
-      </button>
+      <h1>Dashboard</h1>
       <button className="navButton" onClick={() => navigate("/produtos")}>
-        Produtos
+        Lista de Produtos
       </button>
       <button
         className="navButton"
@@ -22,6 +17,15 @@ export default function Sidebar() {
       >
         Cadastrar Produto
       </button>
+      <h2>Autenticação</h2>
+      <div className="header-left">
+        <button className="navButton" onClick={() => navigate("/login")}>
+          Login
+        </button>
+        <button className="navButton" onClick={() => navigate("/cadastroLogin")}>
+          Cadastro
+        </button>
+      </div>
     </div>
   );
 }

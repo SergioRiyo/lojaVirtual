@@ -55,19 +55,27 @@
   margin-bottom: 16px;
 }
 
-.atualizar-btn {
-  width: 100%;
+.atualizar-btn,
+.cancelar-btn {
+  flex: 1;
   padding: 12px;
-  background-color: #ffa500;
-  color: white;
-  font-weight: bold;
-  border: none;
-  border-radius: 10px;
+  height: 45px;
   font-size: 16px;
+  border-radius: 10px;
+  font-weight: bold;
   cursor: pointer;
+  border: none;
+}
+.atualizar-botoes {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
   margin-top: 10px;
 }
 
+.cancelar-btn:hover {
+  background-color: #bbb;
+}
 .atualizar-btn:hover {
   background-color: #e69500;
 }

@@ -7,6 +7,8 @@ import {
   LerProdutos,
 } from "../../conponentes/data/fetchProdutos";
 import { DataContext } from "../../conponentes/context/DataContext";
+import Header from "../../conponentes/header";
+import Sidebar from "../../conponentes/sidebar";
 
 export default function EditarProduto() {
   const { id } = useParams();
@@ -19,7 +21,7 @@ export default function EditarProduto() {
 
   const atualizar = async () => {
     try {
-      await AtualizarProduto(id, nome, valor, imagem);
+      await AtualizarProduto(Number(id), nome, parseFloat(valor), imagem);
       await LerProdutos(setProdutos);
       navigate("/produtos");
     } catch (error) {
@@ -33,20 +35,8 @@ export default function EditarProduto() {
 
   return (
     <>
-      <div className="header">
-        <button className="navButton" onClick={() => navigate("/produtos")}>
-          Produtos
-        </button>
-        <button className="navButton" onClick={() => navigate("/login")}>
-          Login
-        </button>
-        <button
-          className="navButton"
-          onClick={() => navigate("/cadastroLogin")}
-        >
-          Cadastro
-        </button>
-      </div>
+      <Sidebar />
+      <Header />
       <div className="atualizar-container">
         <form onSubmit={handleSubmit} className="atualizar-form">
           <h2 className="atualizar-titulo">Atualizar Produto</h2>
@@ -74,9 +64,18 @@ export default function EditarProduto() {
             onChange={(e) => setImagem(e.target.value)}
           />
 
-          <button type="submit" className="atualizar-btn">
-            Editar
-          </button>
+          <div className="atualizar-botoes">
+            <button type="submit" className="atualizar-btn">
+              Editar
+            </button>
+            <button
+              type="button"
+              className="cancelar-btn"
+              onClick={() => navigate("/produtos")}
+            >
+              Cancelar
+            </button>
+          </div>
         </form>
       </div>
     </>

@@ -2,16 +2,13 @@ import React from "react";
 import "./style.css";
 import { RiShoppingCart2Fill } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
+import Header from "../../conponentes/header";
 
 export default function CadastroLogin(){
     const Navigate = useNavigate();
     return(
         <>
-        <div className="header">
-            <button className="navButton" onClick={() => Navigate("/produtos")}>Produtos</button>
-            <button className="navButton" onClick={() => Navigate("/login")}>Login</button>
-            <button className="navButton" onClick={() => Navigate("/cadastroLogin")}>Cadastro</button>
-        </div>
+        <Header />
         <div className="containerCadastroLogin">
             <form action="submit" className="CadastroLogin">
            
@@ -33,10 +30,10 @@ export default function CadastroLogin(){
                     <input type="password" />
                 </label>
 
-                <button>Criar conta</button>
+                <button onClick={()=>Navigate("/login")}>Criar conta</button>
                 <p>Já tem conta?</p>
 
-                <p><a href="">Entrar</a></p>
+                <p><a onClick={()=>Navigate("/login")}>Entrar</a></p>
             </form>
         </div>
         </>

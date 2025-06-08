@@ -1,23 +1,28 @@
-import { useState,useContext } from "react";
+import { useState, useContext } from "react";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
-import { CriarProduto, LerProdutos } from "../../conponentes/data/fetchProdutos";
+import {
+  CriarProduto,
+  LerProdutos,
+} from "../../conponentes/data/fetchProdutos";
 import { DataContext } from "../../conponentes/context/DataContext";
+import Header from "../../conponentes/header";
+import Sidebar from "../../conponentes/sidebar";
 
 export default function cadastroProduto() {
   const navigate = useNavigate();
-  const {produtos, setProdutos } = useContext(DataContext);
+  const { produtos, setProdutos } = useContext(DataContext);
   const [nome, setNome] = useState("");
   const [valor, setValor] = useState("");
   const [imagem, setImagem] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try{
+    try {
       await CriarProduto(nome, parseFloat(valor), imagem);
       await LerProdutos(setProdutos);
       navigate("/produtos");
-    }catch (error) {
+    } catch (error) {
       console.error("Erro ao criar produto:", error);
     }
     alert(`Produto criado: ${nome}`);
@@ -25,20 +30,8 @@ export default function cadastroProduto() {
 
   return (
     <>
-      <div className="header">
-        <button className="navButton" onClick={() => navigate("/produtos")}>
-          Produtos
-        </button>
-        <button className="navButton" onClick={() => navigate("/login")}>
-          Login
-        </button>
-        <button
-          className="navButton"
-          onClick={() => navigate("/cadastroLogin")}
-        >
-          Cadastro
-        </button>
-      </div>
+      <Sidebar />
+      <Header />
       <div className="container-form">
         <form onSubmit={handleSubmit} className="form-box">
           <h2 className="form-title">Cadastrar Produto</h2>

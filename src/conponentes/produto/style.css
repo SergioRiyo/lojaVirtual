@@ -25,11 +25,11 @@
 
 .botaoCarrinho button {
     font-size: 2rem;
-    color: orange;
+    color: rgb(255, 255, 255);
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    background-color: white;
+    background-color: transparent;
 }
 
 .carCount {
@@ -120,7 +120,7 @@
     margin-bottom: 1rem;
 }
 
-.produto button {
+.produto .btncarrinho {
     background-color: orange;
     color: white;
     border: none;
@@ -179,4 +179,24 @@
 
 .btn-atualizar:hover {
   background: orange;
+}
+.sucesso-login {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #4caf50;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  font-weight: bold;
+  z-index: 2000;
+  animation: fadeInOut 3s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-10px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
 }

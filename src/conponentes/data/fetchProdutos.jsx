@@ -49,7 +49,7 @@ export async function AtualizarProduto(id, nome, valor, imagem) {
   try {
     const response = await axios.post(
       `http://localhost:3000/produtos/atualizar/`,
-      { id, nome, valor, imagem },
+      { id: Number(id), nome, valor, imagem },
       {
         headers: { "Content-Type": "application/json" },
       }

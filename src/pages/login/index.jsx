@@ -1,35 +1,26 @@
 import React from "react";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
+import Header from "../../conponentes/header";
+
 export default function Login() {
   const navigate = useNavigate();
   const [user, setUser] = React.useState("");
   const [senha, setSenha] = React.useState("");
 
-  const login = () => {
-    if (user && senha) {
-      localStorage.setItem("auth", "true");
-      navigate("/produtos");
-    } else {
-      alert("Preencher os campos");
-    }
-  };
+const login = () => {
+  if (user && senha) {
+    localStorage.setItem("auth", "true");
+    navigate("/produtos", { state: { loginSuccess: true } }); // aqui é a mudança
+  } else {
+    alert("Preencher os campos");
+  }
+};
+
   return (
     <>
-      <div className="header">
-        <button className="navButton" onClick={() => navigate("/produtos")}>
-          Produtos
-        </button>
-        <button className="navButton" onClick={() => navigate("/login")}>
-          Login
-        </button>
-        <button
-          className="navButton"
-          onClick={() => navigate("/cadastroLogin")}
-        >
-          Cadastro
-        </button>
-      </div>
+
+      <Header />
       <div className="containerLogin">
         <form
           onSubmit={(e) => {
@@ -64,7 +55,7 @@ export default function Login() {
           </p>
 
           <p>
-            Nao tem conta? <a href="">Cadastre-se</a>
+            Nao tem conta? <a onClick={()=>navigate("/cadastroLogin")}>Cadastre-se</a>
           </p>
         </form>
       </div>
